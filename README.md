@@ -1,4 +1,4 @@
-# Personal Portfolio Website aafrzl.my.id
+# Personal Portfolio
 
 ## Description
 
@@ -66,31 +66,7 @@ NEXT_PUBLIC_REFRESH_TOKEN_SPOTIFY="Your Refresh Token Spotify"
 5. Copy the password that appears
 ```
 
-### Installation
 
-1. Clone the repository
-
-```sh
-git clone https://github.com/aafrzl/v2.portfolio-aafrzl.my.id.git
-```
-
-2. Navigate to the repository directory
-
-```sh
-cd v2.portfolio-aafrzl.my.id
-```
-
-3. Install the dependencies
-
-```sh
-npm install
-```
-
-4. Run the development server
-
-```sh
-npm run dev
-```
 
 ## Usage React Email Template
 
