@@ -26,7 +26,7 @@ export default function HeroText() {
           className="absolute bottom-14 mx-auto cursor-pointer md:bottom-24 xl:bottom-32"
         >
           <Image
-            src={"/images/og-images.jpeg"}
+            src={"/images/images.png"}
             width={150}
             height={150}
             priority
