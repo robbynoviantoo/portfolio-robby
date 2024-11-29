@@ -9,7 +9,7 @@ export function useGetDataDiscordServer() {
     })
 
   const { data, error, isLoading } = useSWR<Discord>(
-    "https://discord.com/api/guilds/1172202073216000010/widget.json",
+    "https://discord.com/api/guilds/547461581131481088/widget.json",
     fetcher,
     process.env.NODE_ENV === "production" ? { refreshInterval: 3000 } : {}
   )
