@@ -137,7 +137,7 @@ export default function NavMenu() {
                 active={active}
                 classes="pr-6"
                 duration={1}
-                link="https://github.com/aafrzl"
+                link="https://github.com/robbynoviantoo"
               />
             </MagneticEffect>
             <MagneticEffect>
@@ -146,7 +146,7 @@ export default function NavMenu() {
                 active={active}
                 classes="pr-6"
                 duration={1.2}
-                link="https://www.linkedin.com/in/afrizal-mufriz-fouji-8a930111b/"
+                link="#"
               />
             </MagneticEffect>
             <MagneticEffect>
@@ -155,7 +155,7 @@ export default function NavMenu() {
                 active={active}
                 classes="pr-6"
                 duration={1.4}
-                link="https://instagram.com/aafrzl_"
+                link="https://instagram.com/robbynovianto_"
               />
             </MagneticEffect>
             <MagneticEffect>
@@ -164,7 +164,7 @@ export default function NavMenu() {
                 active={active}
                 classes="pr-6"
                 duration={1.6}
-                link="https://tiktok.com/@aafrzl.code"
+                link="https://tiktok.com/@robbynovianto_"
               />
             </MagneticEffect>
             <MagneticEffect>
@@ -173,7 +173,7 @@ export default function NavMenu() {
                 active={active}
                 classes="pr-6"
                 duration={1.8}
-                link="mailto:afrizal.mufriz25@gmail.com"
+                link="mailto:heyitsrobby99@gmail.com"
               />
             </MagneticEffect>
           </div>
