@@ -89,7 +89,7 @@ export default function HeroText() {
       {/* Teks Freelance */}
       <h1
         ref={freelanceRef}
-        className="absolute left-[3%] bottom-[26%] text-2xl sm:left-[30%] sm:bottom-[53%] sm:text-4xl" // Responsif untuk mobile
+        className="absolute left-[3%] bottom-[26%] text-2xl sm:left-[30%] sm:bottom-[53%] sm:text-4xl opacity-0" // Responsif untuk mobile
       >
         Freelance
       </h1>
@@ -97,7 +97,7 @@ export default function HeroText() {
       {/* Teks Front-end Developer */}
       <h1
         ref={textRef}
-        className="absolute left-[3%] bottom-[22%] text-2xl sm:left-[56%] sm:bottom-[63%] sm:text-4xl" // Responsif untuk mobile
+        className="absolute left-[3%] bottom-[22%] text-2xl sm:left-[56%] sm:bottom-[63%] sm:text-4xl opacity-0" // Responsif untuk mobile
       >
         Front-end Developer
       </h1>
