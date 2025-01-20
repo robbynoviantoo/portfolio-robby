@@ -46,8 +46,8 @@ export default function Home() {
         <main data-scroll-container className="flex flex-col items-center">
           <Hero />
           <About />
-          {/* <Projects />
-          <Contact /> */}
+          <Projects />
+          <Contact />
         </main>
       </>
     )
