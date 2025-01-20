@@ -146,7 +146,7 @@ export default function NavMenu() {
                 active={active}
                 classes="pr-6"
                 duration={1.2}
-                link="#"
+                link="https://www.linkedin.com/in/heyitsrobby/"
               />
             </MagneticEffect>
             <MagneticEffect>
