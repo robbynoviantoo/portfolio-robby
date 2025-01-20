@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "Coding with Robby",
     images: [
       {
-        url: "/public/images/og-images.jpg",
+        url: "/public/images/hero.png",
         width: 1000,
         height: 1200,
       },

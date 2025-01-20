@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import HeroText from "./HeroText";
 import ParallaxText from "./ParallaxText";
+import HeroGraphic from "./HeroGraphic";
 import DigitalGlobe from "../DigitalGlobe";
 
 export default function Hero() {
@@ -16,11 +17,13 @@ export default function Hero() {
       {/* Container Relatif untuk Posisi Absolut */}
       <div className="relative h-[110vh] w-full">
         {/* ParallaxText di atas Gambar */}
+        <div className="absolute w-full top-[80px] right-[140px] z-30">
+          <HeroGraphic />
+          </div>
         <div className="absolute bottom-[110px] z-20 w-full">
-          <ParallaxText direction={500} baseVelocity={-1}>
+          <ParallaxText direction={500} baseVelocity={-1} className="scrollbar-hide">
             Robby Novianto
           </ParallaxText>
-
         </div>
 
         {/* HeroText dengan Gambar */}

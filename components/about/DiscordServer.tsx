@@ -39,7 +39,7 @@ export default function DiscordServer() {
         >
           <div className="relative w-[75px] overflow-hidden rounded-lg sm:w-[100px]">
             <Image
-              src="/images/images.png"
+              src="/images/hero.png"
               alt="Album art"
               width={100}
               height={100}

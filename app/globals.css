@@ -244,3 +244,17 @@
     max-height: 100px !important;
   }
 }
+
+body {
+  overflow-y: scroll; /* Pastikan scroll tetap aktif */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE dan Edge */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, dan Edge */
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

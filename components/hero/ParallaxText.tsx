@@ -16,6 +16,7 @@ interface ParallaxTextProps {
   children: string;
   baseVelocity: number;
   direction: number;
+  className?: string;
 }
 
 export default function ParallaxText({
@@ -74,7 +75,7 @@ export default function ParallaxText({
           easings: "ease",
         },
       }}
-      className="m-0 flex flex-nowrap overflow-hidden whitespace-nowrap leading-[1.1] tracking-normal"
+      className="m-0 flex flex-nowrap overflow-hidden whitespace-nowrap leading-[1.1] tracking-normal ${className}"
     >
       <motion.div
         style={{ x }}
