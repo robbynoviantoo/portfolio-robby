@@ -8,6 +8,7 @@ export default function HeroText() {
   const [offsetY, setOffsetY] = useState(0);
   const textRef = React.useRef(null);
   const imageRef = React.useRef(null);
+  const freelanceRef = React.useRef(null);
 
   // Fungsi untuk mengupdate posisi gambar dan teks berdasarkan scroll
   const handleScroll = () => {
@@ -38,6 +39,18 @@ export default function HeroText() {
         duration: 2,
         ease: "bounce.out",
       }
+    );
+
+    tl.fromTo(
+      freelanceRef.current,
+      { opacity: 0, y: -50 }, // Awal (opacity 0 dan naik 50px)
+      {
+        opacity: 1,
+        y: 0, // Akhir (opacity 1 dan posisi asli)
+        duration: 1,
+        ease: "bounce.out",
+      },
+      "-=1.0" // Overlap dengan animasi gambar
     );
 
     // Animasi Teks
@@ -75,7 +88,7 @@ export default function HeroText() {
 
       {/* Teks Parallax */}
       <h1
-        ref={textRef}
+        ref={freelanceRef}
         style={{
           transform: `translateY(-${offsetY * 0.8}px)`, // Gerakan ke atas (minus)
         }}
