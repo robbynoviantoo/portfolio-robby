@@ -56,7 +56,7 @@ export default function HeroText() {
 
   return (
     <div
-      className="relative flex h-[110vh] w-full items-center justify-center overflow-hidden"
+      className="relative flex h-[103vh] w-full items-center justify-center overflow-hidden"
       style={{ backgroundColor: "#999d9e" }} // Warna latar belakang
     >
       {/* Gambar Hero */}
@@ -79,7 +79,7 @@ export default function HeroText() {
         style={{
           transform: `translateY(-${offsetY * 0.8}px)`, // Gerakan ke atas (minus)
         }}
-        className="absolute top-[30%] left-[24%] text-4xl font-normal text-white"
+        className="absolute top-[33%] left-[28%] text-4xl font-normal text-white"
       >
         Freelance
       </h1>
