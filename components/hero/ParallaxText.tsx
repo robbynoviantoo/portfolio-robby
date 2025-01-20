@@ -79,7 +79,7 @@ export default function ParallaxText({
     >
       <motion.div
         style={{ x }}
-        className="flex flex-nowrap whitespace-nowrap text-[10rem] font-bold text-white md:text-[12rem] lg:text-[14rem]"
+        className="flex flex-nowrap whitespace-nowrap text-[10rem] font-bold  md:text-[12rem] lg:text-[14rem]" // Warna diubah ke biru
       >
         <motion.span
           style={{ skew: skewVelocityFactor }}
