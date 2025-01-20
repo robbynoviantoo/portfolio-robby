@@ -41,9 +41,10 @@ export default function HeroText() {
       }
     );
 
+    // Animasi Teks Freelance
     tl.fromTo(
       freelanceRef.current,
-      { opacity: 0, y: -50 }, // Awal (opacity 0 dan naik 50px)
+      { opacity: 0, y: 50 }, // Awal (opacity 0 dan naik 50px)
       {
         opacity: 1,
         y: 0, // Akhir (opacity 1 dan posisi asli)
@@ -53,7 +54,7 @@ export default function HeroText() {
       "-=1.0" // Overlap dengan animasi gambar
     );
 
-    // Animasi Teks
+    // Animasi Teks Front-end Developer
     tl.fromTo(
       textRef.current,
       { opacity: 0, y: 50 }, // Awal (opacity 0 dan turun 50px)
@@ -77,31 +78,26 @@ export default function HeroText() {
         ref={imageRef} // Tambahkan referensi untuk GSAP
         src={"/images/hero.png"}
         layout="fill" // Gambar memenuhi area container
-        objectFit="contain" // Memastikan gambar tidak terpotong
-        priority
         alt="Robby"
+        priority
         style={{
           transform: `translateY(${offsetY * 0.5}px)`, // Efek parallax gambar (lebih lambat)
         }}
-        className="absolute left-0 top-0"
+        className="absolute left-0 top-0 opacity-0 object-cover sm:object-contain" // Responsif
       />
 
-      {/* Teks Parallax */}
+      {/* Teks Freelance */}
       <h1
         ref={freelanceRef}
-        style={{
-          transform: `translateY(-${offsetY * 0.8}px)`, // Gerakan ke atas (minus)
-        }}
-        className="absolute top-[33%] left-[28%] text-4xl font-normal text-white"
+        className="absolute left-[3%] bottom-[26%] text-2xl sm:left-[30%] sm:bottom-[53%] sm:text-4xl" // Responsif untuk mobile
       >
         Freelance
       </h1>
+
+      {/* Teks Front-end Developer */}
       <h1
         ref={textRef}
-        style={{
-          transform: `translateY(-${offsetY * 0.4}px)`, // Gerakan ke atas (minus)
-        }}
-        className="absolute right-[17%] text-4xl font-normal text-white"
+        className="absolute left-[3%] bottom-[22%] text-2xl sm:left-[56%] sm:bottom-[63%] sm:text-4xl" // Responsif untuk mobile
       >
         Front-end Developer
       </h1>
