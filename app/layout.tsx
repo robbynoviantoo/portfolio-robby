@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "A seasoned frontend web developer with a passion for creating engaging and interactive websites.",
-  metadataBase: new URL("https://aafrzl.my.id"),
+  metadataBase: new URL("https://portfolio-robby.netlify.app"),
   openGraph: {
     title: {
       template: "Coding with Robby | %s",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     },
     description:
       "A seasoned frontend web developer with a passion for creating engaging and interactive websites.",
-    url: "https://aafrzl.my.id",
+    url: "https://portfolio-robby.netlify.app",
     siteName: "Coding with Robby",
     images: [
       {
@@ -35,9 +35,6 @@ export const metadata: Metadata = {
     type: "website",
   },
   keywords: [
-    "afrizal mufriz fouji",
-    "afrizal",
-    "coding with afrizal",
     "frontend web developer",
     "frontend developer",
     "frontend engineer",
@@ -72,7 +69,7 @@ export const metadata: Metadata = {
     },
     description:
       "A seasoned frontend web developer with a passion for creating engaging and interactive websites.",
-    creator: "@aafrzl",
+    creator: "@robbynovianto_",
     images: [
       {
         url: "/public/images/og-images.jpg",

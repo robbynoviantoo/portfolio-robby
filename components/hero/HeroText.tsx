@@ -3,70 +3,56 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import { AnimateWords } from "./AnimateWords"
 
 export default function HeroText() {
-  const [offsetY, setOffsetY] = useState(0);
-  const textRef = React.useRef(null);
-  const imageRef = React.useRef(null);
-  const freelanceRef = React.useRef(null);
+  const [offsetY, setOffsetY] = useState(0); // State untuk parallax
+  const [isAnimating, setIsAnimating] = useState(true); // State untuk memeriksa apakah animasi selesai
+  const imageRef = React.useRef<HTMLImageElement>(null);
 
-  // Fungsi untuk mengupdate posisi gambar dan teks berdasarkan scroll
+  // Fungsi untuk mengupdate posisi gambar berdasarkan scroll
   const handleScroll = () => {
-    setOffsetY(window.scrollY);
+    if (!isAnimating) {
+      setOffsetY(window.scrollY); // Update posisi scroll
+    }
   };
 
+  // Jalankan animasi GSAP saat komponen dimount
   useEffect(() => {
-    // Menambahkan event listener untuk scroll
-    window.addEventListener("scroll", handleScroll);
+    // Disable scroll selama animasi
+    document.body.style.overflow = "hidden";
 
-    // Membersihkan event listener saat komponen unmount
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setIsAnimating(false); // Set animasi selesai
+        document.body.style.overflow = "auto"; // Enable scroll setelah animasi selesai
+      },
+    });
+
+    // Animasi gambar (blur ke tajam)
+    tl.fromTo(
+      imageRef.current,
+      {
+        opacity: 0,
+        scale: 1,
+        filter: "blur(20px)",
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 2,
+      }
+    );
+  }, []); // Animasi hanya dijalankan sekali saat komponen dimount
+
+  // Listener untuk scroll
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  useEffect(() => {
-    // GSAP Timeline untuk animasi teks dan gambar
-    const tl = gsap.timeline();
-
-    // Animasi Gambar
-    tl.fromTo(
-      imageRef.current,
-      { opacity: 0, scale: 0.8 }, // Awal (transparan dan kecil)
-      {
-        opacity: 1,
-        scale: 1, // Akhir (penuh dan ukuran asli)
-        duration: 2,
-        ease: "bounce.out",
-      }
-    );
-
-    // Animasi Teks Freelance
-    tl.fromTo(
-      freelanceRef.current,
-      { opacity: 0, y: 50 }, // Awal (opacity 0 dan naik 50px)
-      {
-        opacity: 1,
-        y: 0, // Akhir (opacity 1 dan posisi asli)
-        duration: 1,
-        ease: "bounce.out",
-      },
-      "-=1.0" // Overlap dengan animasi gambar
-    );
-
-    // Animasi Teks Front-end Developer
-    tl.fromTo(
-      textRef.current,
-      { opacity: 0, y: 50 }, // Awal (opacity 0 dan turun 50px)
-      {
-        opacity: 1,
-        y: 0, // Akhir (opacity 1 dan posisi asli)
-        duration: 1,
-        ease: "bounce.out",
-      },
-      "-=0.5" // Overlap dengan animasi gambar
-    );
-  }, []);
+  }, [isAnimating]); // Listener tergantung pada isAnimating
 
   return (
     <div
@@ -75,32 +61,29 @@ export default function HeroText() {
     >
       {/* Gambar Hero */}
       <Image
-        ref={imageRef} // Tambahkan referensi untuk GSAP
+        ref={imageRef}
         src={"/images/hero.png"}
-        layout="fill" // Gambar memenuhi area container
+        layout="fill"
         alt="Robby"
         priority
         style={{
-          transform: `translateY(${offsetY * 0.5}px)`, // Efek parallax gambar (lebih lambat)
+          transform: `translateY(${offsetY * 0.5}px)`, // Efek parallax
         }}
-        className="absolute left-0 top-0 opacity-0 object-cover sm:object-contain" // Responsif
+        className="absolute left-0 top-0 md:top-[50px] object-cover sm:object-contain opacity-0"
       />
 
       {/* Teks Freelance */}
-      <h1
-        ref={freelanceRef}
-        className="absolute left-[3%] bottom-[26%] text-2xl sm:left-[30%] sm:bottom-[53%] sm:text-4xl opacity-0" // Responsif untuk mobile
-      >
-        Freelance
-      </h1>
+      <div className="absolute left-[3%] bottom-[30%] sm:left-[30%] sm:bottom-[53%]">
+        <AnimateWords title="Freelance" style="text-2xl sm:text-4xl font-bold" />
+      </div>
 
       {/* Teks Front-end Developer */}
-      <h1
-        ref={textRef}
-        className="absolute left-[3%] bottom-[22%] text-2xl sm:left-[56%] sm:bottom-[63%] sm:text-4xl opacity-0" // Responsif untuk mobile
-      >
-        Front-end Developer
-      </h1>
+      <div className="absolute left-[3%] bottom-[22%] sm:left-[56%] sm:bottom-[63%]">
+        <AnimateWords
+          title="Front-end Developer"
+          style="text-2xl sm:text-4xl font-bold"
+        />
+      </div>
     </div>
   );
 }
