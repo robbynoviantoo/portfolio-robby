@@ -41,7 +41,7 @@ export default function SocialMedia() {
       className="flex w-full flex-col justify-between gap-4 lg:flex-row"
     >
       <Spotify />
-      <TiktokEmbed />
+      {/* <TiktokEmbed /> */}
       <DiscordServer />
     </motion.div>
   )

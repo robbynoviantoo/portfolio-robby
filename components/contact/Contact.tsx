@@ -31,14 +31,15 @@ export default function Contact() {
       <ContactRounded />
       <motion.div
         ref={canvasRef}
-        className="absolute inset-0 z-30"
-        initial={{ opacity: 0 }} // Canvas tidak terlihat sebelum masuk viewport
-        animate={{ opacity: isInView ? 1 : 0 }} // Muncul ketika masuk viewport
-        transition={{ duration: 0 }} // Tanpa animasi
+        className="absolute inset-0 z-10" // Atur z-index di bawah form
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isInView ? 1 : 0 }}
+        transition={{ duration: 0 }}
+        style={{ pointerEvents: "none" }} // Pastikan canvas tidak memblokir interaksi
       >
         {isInView && (
           <Canvas
-            className="w-full h-full"
+            className="w-full h-full z-50"
             camera={{ position: [0, 0, 13], fov: 25 }}
             style={{ backgroundColor: "transparent" }}
           >
@@ -84,7 +85,7 @@ export default function Contact() {
           </Canvas>
         )}
       </motion.div>
-      <div className="w-full overflow-hidden px-[5%] relative z-10">
+      <div className="w-full overflow-hidden px-[5%] relative z-20"> {/* Z-index di atas canvas */}
         <div className="contact-content flex min-h-[100svh] w-full flex-col items-center justify-between pt-12">
           <ContactTitle title="Contact" />
           <ContactForm />
