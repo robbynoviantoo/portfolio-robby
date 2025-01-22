@@ -1,26 +1,24 @@
-"use client";
+"use client"
 
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
-import { useAnimation } from "framer-motion";
+import { motion, useInView } from "framer-motion"
+import { useEffect, useRef } from "react"
+import { useAnimation } from "framer-motion"
 
 interface AnimateWordsProps {
-  title: string;
-  style: string;
+  title: string
+  style: string
 }
 
 export const AnimateWords = ({ title, style }: AnimateWordsProps) => {
-  const ctrls = useAnimation();
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: false }); // `once: false` agar animasi diputar ulang
+  const ctrls = useAnimation()
+  const ref = useRef(null)
+  const inView = useInView(ref)
 
   useEffect(() => {
     if (inView) {
-      ctrls.start("animate");
-    } else {
-      ctrls.start("initial"); // Reset ke keadaan awal saat keluar dari viewport
+      ctrls.start("animate")
     }
-  }, [ctrls, inView]);
+  }, [ctrls, inView])
 
   const wordAnimation = {
     initial: {
@@ -36,13 +34,13 @@ export const AnimateWords = ({ title, style }: AnimateWordsProps) => {
         duration: 1,
       },
     },
-  };
+  }
 
   return (
     <h1 aria-label={title} role="heading">
       <motion.span
         ref={ref}
-        className="flex flex-col overflow-hidden text-center text-[96px] font-extrabold leading-[0.8em] sm:text-[120px] sm:leading-[0.85em] md:text-[155.5px] lg:text-[215px]"
+        className="flex flex-col overflow-hidden text-center text-[96px] font-extrabold leading-[0.8em] text-zinc-800 dark:text-zinc-200 sm:text-[120px] sm:leading-[0.85em] md:text-[155.5px] lg:text-[215px]"
       >
         {title.split(" ").map((word, index) => (
           <motion.div
@@ -55,12 +53,15 @@ export const AnimateWords = ({ title, style }: AnimateWordsProps) => {
             }}
             className="flex items-center justify-center overflow-hidden"
           >
-            <motion.span className={style} variants={wordAnimation}>
+            <motion.span
+              className={style}
+              variants={wordAnimation}
+            >
               {word + "\u00A0"}
             </motion.span>
           </motion.div>
         ))}
       </motion.span>
     </h1>
-  );
-};
+  )
+}
