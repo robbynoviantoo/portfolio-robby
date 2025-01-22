@@ -33,7 +33,7 @@ export default function ContactRounded() {
   return (
     <div
       ref={el}
-      className="pointer-events-none absolute left-[-10%] top-0 z-10 h-[500px] w-[120%] md:h-[600px] lg:h-[800px] -translate-y-1/2"
+      className="pointer-events-none absolute left-[-10%] top-0 z-40 h-[500px] w-[120%] md:h-[600px] lg:h-[800px] -translate-y-1/2"
     >
       <div className="contact-round h-full w-full rounded-br-[100%] rounded-bl-[100%] bg-zinc-50 dark:bg-zinc-900" />
     </div>
