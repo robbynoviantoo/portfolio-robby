@@ -27,7 +27,6 @@ export async function POST(req: NextRequest) {
     to: process.env.NEXT_PUBLIC_EMAIL as string,
     subject: subject,
     replyTo: email,
-    html: emailHtml,
   }
 
   const sendMailPromise = () =>
