@@ -22,12 +22,15 @@ export async function POST(req: NextRequest) {
     ContactEmail({email, name, subject, message}) as ReactElement
   )
 
+
   const mailOptions: Mail.Options = {
     from: email,
     to: process.env.NEXT_PUBLIC_EMAIL as string,
     subject: subject,
     replyTo: email,
+    html: message, // Tambahkan properti html
   }
+  
 
   const sendMailPromise = () =>
     new Promise<string>((resolve, reject) => {
