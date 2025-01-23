@@ -41,7 +41,11 @@ export default function Home() {
         <div ref={navRef}>
           <Nav />
         </div>
-        <main
+        <Hero />
+        <About />
+        <Projects />
+        <Contact />
+        {/* <main
           ref={mainRef}
           data-scroll-container
           className="flex flex-col items-center scrollbar-hide"
@@ -50,7 +54,7 @@ export default function Home() {
           <About />
           <Projects />
           <Contact />
-        </main>
+        </main> */}
       </>
     );
   }

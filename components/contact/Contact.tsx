@@ -28,13 +28,17 @@ export default function Contact() {
       id="contact"
       className="contact-section relative z-[0] mt-24 flex min-h-screen w-full flex-col overflow-hidden bg-zinc-800 dark:bg-zinc-100"
     >
-      <ContactRounded />
+      {/* ContactRounded */}
+      <div className="relative z-10">
+        <ContactRounded />
+      </div>
+
       <div className="flex w-full flex-1">
         {/* Kolom Kiri: Canvas (Hanya di desktop) */}
         <div ref={canvasRef} className="hidden lg:flex flex-1 relative">
           {isInView && ( // Render Canvas hanya jika masuk viewport
             <Canvas
-              className="w-full h-[full]"
+              className="w-full h-full"
               camera={{ position: [0, 0, 13], fov: 25 }}
               style={{ backgroundColor: "transparent" }}
             >
