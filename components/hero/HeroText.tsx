@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
-import { AnimateWords } from "./AnimateWords"
+import { AnimateWords } from "./AnimateWords";
 
 export default function HeroText() {
   const [offsetY, setOffsetY] = useState(0); // State untuk parallax
@@ -12,20 +12,23 @@ export default function HeroText() {
 
   // Fungsi untuk mengupdate posisi gambar berdasarkan scroll
   const handleScroll = () => {
-    if (!isAnimating) {
-      setOffsetY(window.scrollY); // Update posisi scroll
-    }
+    setOffsetY(window.scrollY); // Update posisi scroll
   };
+
+  // Tambahkan event listener untuk scroll
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Jalankan animasi GSAP saat komponen dimount
   useEffect(() => {
-    // Disable scroll selama animasi
-    document.body.style.overflow = "hidden";
-
     const tl = gsap.timeline({
       onComplete: () => {
         setIsAnimating(false); // Set animasi selesai
-        document.body.style.overflow = "auto"; // Enable scroll setelah animasi selesai
       },
     });
 
@@ -46,24 +49,28 @@ export default function HeroText() {
     );
   }, []); // Animasi hanya dijalankan sekali saat komponen dimount
 
-
   return (
     <div
       className="relative flex h-[103vh] w-full items-center justify-center overflow-hidden"
       style={{ backgroundColor: "#999d9e" }} // Warna latar belakang
     >
       {/* Gambar Hero */}
-      <Image
-        ref={imageRef}
-        src={"/images/hero.png"}
-        layout="fill"
-        alt="Robby"
-        priority
+      <div
+        className="absolute left-0 top-0 w-full h-full"
         style={{
-          transform: `translateY(${offsetY * 0.5}px)`, // Efek parallax
+          transform: `translateY(${offsetY * 0.3}px)`, // Efek parallax
+          transition: "transform 0.1s linear",
         }}
-        className="absolute left-0 top-0 md:top-[50px] object-cover sm:object-contain opacity-0"
-      />
+      >
+        <Image
+          ref={imageRef}
+          src={"/images/hero.png"}
+          layout="fill"
+          alt="Robby"
+          priority
+          className="object-cover sm:object-contain"
+        />
+      </div>
 
       {/* Teks Freelance */}
       <div className="absolute left-[3%] bottom-[30%] sm:left-[30%] sm:bottom-[53%]">

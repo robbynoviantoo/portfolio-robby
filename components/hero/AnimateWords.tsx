@@ -1,24 +1,26 @@
-"use client"
+"use client";
 
-import { motion, useInView } from "framer-motion"
-import { useEffect, useRef } from "react"
-import { useAnimation } from "framer-motion"
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { useAnimation } from "framer-motion";
 
 interface AnimateWordsProps {
-  title: string
-  style: string
+  title: string;
+  style: string;
 }
 
 export const AnimateWords = ({ title, style }: AnimateWordsProps) => {
-  const ctrls = useAnimation()
-  const ref = useRef(null)
-  const inView = useInView(ref)
+  const ctrls = useAnimation(); // Kontrol animasi
+  const ref = useRef(null); // Referensi elemen
+  const inView = useInView(ref, { once: false }); // `once: false` memungkinkan animasi berulang
 
   useEffect(() => {
     if (inView) {
-      ctrls.start("animate")
+      ctrls.start("animate"); // Jalankan animasi saat masuk viewport
+    } else {
+      ctrls.start("initial"); // Kembalikan ke state awal saat meninggalkan viewport
     }
-  }, [ctrls, inView])
+  }, [ctrls, inView]);
 
   const wordAnimation = {
     initial: {
@@ -29,12 +31,11 @@ export const AnimateWords = ({ title, style }: AnimateWordsProps) => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.8,
         ease: [0.2, 0.65, 0.3, 0.9],
         duration: 1,
       },
     },
-  }
+  };
 
   return (
     <h1 aria-label={title} role="heading">
@@ -53,15 +54,12 @@ export const AnimateWords = ({ title, style }: AnimateWordsProps) => {
             }}
             className="flex items-center justify-center overflow-hidden"
           >
-            <motion.span
-              className={style}
-              variants={wordAnimation}
-            >
+            <motion.span className={style} variants={wordAnimation}>
               {word + "\u00A0"}
             </motion.span>
           </motion.div>
         ))}
       </motion.span>
     </h1>
-  )
-}
+  );
+};

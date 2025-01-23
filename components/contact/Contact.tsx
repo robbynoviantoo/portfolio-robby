@@ -30,8 +30,8 @@ export default function Contact() {
     >
       <ContactRounded />
       <div className="flex w-full flex-1">
-        {/* Kolom Kiri: Canvas */}
-        <div ref={canvasRef} className="flex-1 relative">
+        {/* Kolom Kiri: Canvas (Hanya di desktop) */}
+        <div ref={canvasRef} className="hidden lg:flex flex-1 relative">
           {isInView && ( // Render Canvas hanya jika masuk viewport
             <Canvas
               className="w-full h-[full]"
@@ -68,7 +68,7 @@ export default function Contact() {
         </div>
 
         {/* Kolom Kanan: Form */}
-        <div className="flex-1 flex flex-col items-center justify-center px-8">
+        <div className="flex flex-1 flex-col items-center justify-center px-8">
           <ContactTitle title="Contact" />
           <ContactForm />
         </div>
