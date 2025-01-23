@@ -8,6 +8,7 @@ import { AnimateWords } from "./AnimateWords";
 export default function HeroText() {
   const [offsetY, setOffsetY] = useState(0); // State untuk parallax
   const [isAnimating, setIsAnimating] = useState(true); // State untuk memeriksa apakah animasi selesai
+  const [isLoaded, setIsLoaded] = useState(false); // State untuk memeriksa apakah gambar selesai dimuat
   const imageRef = React.useRef<HTMLImageElement>(null);
 
   // Fungsi untuk mengupdate posisi gambar berdasarkan scroll
@@ -26,28 +27,30 @@ export default function HeroText() {
 
   // Jalankan animasi GSAP saat komponen dimount
   useEffect(() => {
-    const tl = gsap.timeline({
-      onComplete: () => {
-        setIsAnimating(false); // Set animasi selesai
-      },
-    });
+    if (isLoaded) {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          setIsAnimating(false); // Set animasi selesai
+        },
+      });
 
-    // Animasi gambar (blur ke tajam)
-    tl.fromTo(
-      imageRef.current,
-      {
-        opacity: 0,
-        scale: 1,
-        filter: "blur(20px)",
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        filter: "blur(0px)",
-        duration: 1,
-      }
-    );
-  }, []); // Animasi hanya dijalankan sekali saat komponen dimount
+      // Animasi gambar (blur ke tajam)
+      tl.fromTo(
+        imageRef.current,
+        {
+          opacity: 0,
+          scale: 1,
+          filter: "blur(20px)",
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 1,
+        }
+      );
+    }
+  }, [isLoaded]); // Animasi dijalankan hanya setelah gambar dimuat
 
   return (
     <div
@@ -68,7 +71,8 @@ export default function HeroText() {
           layout="fill"
           alt="Robby"
           priority
-          className="object-cover sm:object-contain"
+          className="object-cover sm:object-contain opacity-0" // Default: opacity 0
+          onLoadingComplete={() => setIsLoaded(true)} // Set isLoaded ke true setelah gambar selesai dimuat
         />
       </div>
 
