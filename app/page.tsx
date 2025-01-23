@@ -35,22 +35,22 @@ export default function Home() {
   }, [loadingPreloader]);
 
   // Animasi GSAP untuk Nav dan Main
-  useEffect(() => {
-    if (endedLoading) {
-      const tl = gsap.timeline();
-      tl.fromTo(
-        navRef.current,
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      )
-        .fromTo(
-          mainRef.current,
-          { y: 100, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
-          "-=0.5" // Overlap animasi main dengan nav
-        );
-    }
-  }, [endedLoading]);
+  // useEffect(() => {
+  //   if (endedLoading) {
+  //     const tl = gsap.timeline();
+  //     tl.fromTo(
+  //       navRef.current,
+  //       { y: 100, opacity: 0 },
+  //       { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+  //     )
+  //       .fromTo(
+  //         mainRef.current,
+  //         { y: 100, opacity: 0 },
+  //         { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
+  //         "-=0.5" // Overlap animasi main dengan nav
+  //       );
+  //   }
+  // }, [endedLoading]);
 
   if (loadingPreloader) {
     return (
@@ -65,7 +65,7 @@ export default function Home() {
   if (!loadingPreloader) {
     return (
       <>
-        <div ref={navRef} data-scroll-container>
+        <div ref={navRef}>
           <Nav />
         </div>
         <main

@@ -24,23 +24,6 @@ export default function ContactForm() {
     },
   });
 
-  useIsomorphicLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.fromTo(
-      ".contact-content",
-      { translateY: "-50%" },
-      {
-        translateY: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".contact-section",
-          scrub: true,
-          start: "top bottom",
-          end: "top top",
-        },
-      }
-    );
-  }, []);
 
   const { errors } = state;
 

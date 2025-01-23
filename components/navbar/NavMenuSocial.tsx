@@ -25,7 +25,7 @@ export default function NavMenuSocial({
   const tl = useRef<GSAPTimeline | null>(gsap.timeline({ paused: true }))
 
   useIsomorphicLayoutEffect(() => {
-    if(!el.current) return console.log("el.current is null")
+    if(!el.current) 
     gsap.context(() => {
       tl.current?.fromTo(
         el.current,
