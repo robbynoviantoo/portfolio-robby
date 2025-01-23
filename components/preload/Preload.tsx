@@ -17,7 +17,7 @@ export default function Preload({ endedLoading }: PreloadProps) {
     if (counter) {
       gsap.to(counter, {
         innerHTML: 100,
-        duration: 3,
+        duration: 2,
         ease: "power1.out",
         onUpdate: () => {
           counter.innerHTML = counter.innerHTML
@@ -35,7 +35,6 @@ export default function Preload({ endedLoading }: PreloadProps) {
       )}
     >
       <div className="stroke">
-        <Logo />
         <div className="text-center font-semibold" ref={counterRef}>
           0%
         </div>

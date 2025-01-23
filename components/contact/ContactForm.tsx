@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { formSubmission } from "@/actions/formAction"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Loader, Mail } from "lucide-react"
-import { useRef } from "react"
-import { useFormState, useFormStatus } from "react-dom"
-import MagneticEffect from "../providers/MagneticEffect"
-import { Button } from "../ui/button"
-import ContactFormLine from "./ContactFormLine"
-import useIsomorphicLayoutEffect from "@/hooks/UseIsomorphicLayoutEffect"
+import { formSubmission } from "@/actions/formAction";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Loader, Mail } from "lucide-react";
+import { useRef } from "react";
+import { useFormState, useFormStatus } from "react-dom";
+import MagneticEffect from "../providers/MagneticEffect";
+import { Button } from "../ui/button";
+import ContactFormLine from "./ContactFormLine";
+import useIsomorphicLayoutEffect from "@/hooks/UseIsomorphicLayoutEffect";
 
 export default function ContactForm() {
-  const el = useRef<HTMLDivElement | null>(null)
-  const formEl = useRef<HTMLFormElement | null>(null)
-  const { pending } = useFormStatus()
+  const el = useRef<HTMLDivElement | null>(null);
+  const formEl = useRef<HTMLFormElement | null>(null);
+  const { pending } = useFormStatus();
   const [state, formAction] = useFormState(formSubmission, {
     errors: {
       email: false,
@@ -22,10 +22,10 @@ export default function ContactForm() {
       message: false,
       subject: false,
     },
-  })
+  });
 
   useIsomorphicLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo(
       ".contact-content",
       { translateY: "-50%" },
@@ -39,10 +39,10 @@ export default function ContactForm() {
           end: "top top",
         },
       }
-    )
-  }, [])
+    );
+  }, []);
 
-  const { errors } = state
+  const { errors } = state;
 
   const handleFocus = (inputId: number) => {
     const ctx = gsap.context(() => {
@@ -54,11 +54,12 @@ export default function ContactForm() {
           duration: 1,
           ease: "power1.inOut",
         }
-      )
-    })
+      );
+    });
 
-    return () => ctx.revert()
-  }
+    // Ensure cleanup of GSAP context
+    return () => ctx.revert();
+  };
 
   return (
     <div
@@ -68,7 +69,7 @@ export default function ContactForm() {
       <form
         ref={formEl}
         action={async function (formData) {
-          await formAction(formData)
+          await formAction(formData);
 
           if (
             errors.email === false &&
@@ -76,10 +77,11 @@ export default function ContactForm() {
             errors.message === false &&
             errors.subject === false
           ) {
-            formEl.current?.reset()
+            formEl.current?.reset();
           }
         }}
       >
+        {/* Name Input */}
         <div className="group">
           <div className="relative overflow-hidden">
             <input
@@ -98,6 +100,8 @@ export default function ContactForm() {
             </span>
           )}
         </div>
+
+        {/* Email Input */}
         <div className="group">
           <div className="relative overflow-hidden">
             <input
@@ -116,6 +120,8 @@ export default function ContactForm() {
             </span>
           )}
         </div>
+
+        {/* Subject Input */}
         <div className="group">
           <div className="relative overflow-hidden">
             <input
@@ -128,12 +134,14 @@ export default function ContactForm() {
             />
             <ContactFormLine inputId={3} hasError={errors.subject} />
           </div>
-          {errors.email && (
+          {errors.subject && (
             <span className="block text-sm font-light text-red-500 lg:text-base">
               Please enter a valid subject
             </span>
           )}
         </div>
+
+        {/* Message Input */}
         <div className="group">
           <div className="relative overflow-hidden">
             <textarea
@@ -146,10 +154,12 @@ export default function ContactForm() {
           </div>
           {errors.message && (
             <span className="block text-sm font-light text-red-500 lg:text-base">
-              Please enter a message atleast 3 characters long
+              Please enter a message at least 3 characters long
             </span>
           )}
         </div>
+
+        {/* Submit Button */}
         <Button
           aria-disabled={pending}
           variant="outline"
@@ -165,12 +175,12 @@ export default function ContactForm() {
             ) : (
               <div className="inline-flex items-center gap-x-2">
                 <Mail className="h-6 w-6" />
-                <span>Send</span>
+                <span>Send</span> 
               </div>
             )}
           </MagneticEffect>
         </Button>
       </form>
     </div>
-  )
+  );
 }

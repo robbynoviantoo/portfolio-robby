@@ -77,15 +77,15 @@ export default function HeroText() {
       </div>
 
       {/* Teks Freelance */}
-      <div className="absolute left-[3%] bottom-[30%] sm:left-[30%] sm:bottom-[53%]">
-        <AnimateWords title="Freelance" style="text-2xl sm:text-4xl font-bold" />
+      <div className="absolute left-[3%] bottom-[31%] lg:left-[20%] lg:bottom-[53%] xl:left-[30%] xl:bottom-[53%]">
+        <AnimateWords title="Freelance" style="text-2xl xl:text-4xl font-bold" />
       </div>
 
       {/* Teks Front-end Developer */}
-      <div className="absolute left-[3%] bottom-[22%] sm:left-[56%] sm:bottom-[63%]">
+      <div className="absolute left-[3%] bottom-[24%] lg:left-[60%] lg:bottom-[63%] xl:left-[56%] xl:bottom-[63%]">
         <AnimateWords
           title="Front-End Developer"
-          style="text-2xl sm:text-4xl font-bold"
+          style="text-2xl xl:text-4xl font-bold"
         />
       </div>
     </div>

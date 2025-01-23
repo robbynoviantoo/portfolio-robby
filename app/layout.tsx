@@ -114,10 +114,11 @@ export default function RootLayout({
               },
             }}
           >
-            {children}
+            {/* Tambahkan data-scroll-container di sini */}
+            <div data-scroll-container>{children}</div>
           </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

@@ -11,7 +11,7 @@ export default function NavHome() {
 
   useIsomorphicLayoutEffect(() => {
     gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.5 })
+      const tl = gsap.timeline({ delay: 0.1 })
       tl.to(el.current, { x: 0, duration: 2, ease: "power4.inOut" }, 0)
     }, el)
   }, [])

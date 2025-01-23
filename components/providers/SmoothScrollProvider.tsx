@@ -1,44 +1,55 @@
-"use client"
+"use client";
 
-import { createContext, useEffect, useState } from "react"
+import { createContext, useEffect, useState } from "react";
 
 export const SmoothScrollContext = createContext({
   scroll: null as LocomotiveScroll | null,
-})
+});
 
 interface SmoothScrollProviderProps {
-  children: React.ReactNode
-  options?: any
+  children: React.ReactNode;
+  options?: any;
 }
 
 export const SmoothScrollProvider = ({
   children,
   options,
 }: SmoothScrollProviderProps) => {
-  const [scroll, setScroll] = useState<LocomotiveScroll | null>(null)
+  const [scroll, setScroll] = useState<LocomotiveScroll | null>(null);
 
   useEffect(() => {
-    if (!scroll) {
-      ;(async () => {
-        try {
-          const LocomotiveScroll = (await import("locomotive-scroll")).default
+    let scrollInstance: LocomotiveScroll | null = null;
 
-          setScroll(
-            new LocomotiveScroll({
-              el: document.querySelector("[data-scroll-container]"),
-              ...options,
-            })
-          )
-        } catch (error) {
-          throw Error(`[SmoothScrollProvider]: ${error}`)
-        }
-      })()
-    }
+    const initializeScroll = async () => {
+      const container = document.querySelector("[data-scroll-container]");
+      if (!container) {
+        console.error(
+          "[SmoothScrollProvider]: No element found with the attribute [data-scroll-container]."
+        );
+        return;
+      }
+
+      try {
+        const LocomotiveScroll = (await import("locomotive-scroll")).default;
+
+        scrollInstance = new LocomotiveScroll({
+          el: container,
+          ...options,
+        });
+
+        setScroll(scrollInstance);
+      } catch (error) {
+        console.error(`[SmoothScrollProvider]: ${error}`);
+      }
+    };
+
+    initializeScroll();
 
     return () => {
-      scroll?.destroy()
-    }
-  }, [options, scroll])
+      scrollInstance?.destroy();
+      scrollInstance = null;
+    };
+  }, [options]);
 
   return (
     <SmoothScrollContext.Provider
@@ -48,5 +59,5 @@ export const SmoothScrollProvider = ({
     >
       {children}
     </SmoothScrollContext.Provider>
-  )
-}
+  );
+};
