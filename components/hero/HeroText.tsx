@@ -71,7 +71,7 @@ export default function HeroText() {
           layout="fill"
           alt="Robby"
           priority
-          className="object-cover sm:object-contain opacity-0" // Default: opacity 0
+          className="object-cover lg:object-contain opacity-0" // Default: opacity 0
           onLoadingComplete={() => setIsLoaded(true)} // Set isLoaded ke true setelah gambar selesai dimuat
         />
       </div>

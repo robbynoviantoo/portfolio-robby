@@ -33,9 +33,11 @@ export const AnimateWords = ({ title, style }: AnimateWordsProps) => {
       transition: {
         ease: [0.2, 0.65, 0.3, 0.9],
         duration: 1,
+        delay: 0.5, // Delay dalam detik
       },
     },
   };
+  
 
   return (
     <h1 aria-label={title} role="heading">

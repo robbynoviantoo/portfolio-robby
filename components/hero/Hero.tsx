@@ -30,20 +30,39 @@ export default function Hero() {
         <HeroText />
       </div>
 
-      {/* DigitalGlobe */}
       <motion.div
-        initial={{ opacity: 0, x: -500 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 2 }}
-        className="absolute left-0 top-[50%] hidden h-[121px] w-[350px] flex-col items-start justify-center rounded-br-full rounded-tr-full bg-zinc-800 px-5 dark:bg-zinc-100 lg:flex"
-      >
-        <p className="text-md font-medium text-zinc-200 dark:text-zinc-600">Locate</p>
-        <p className="text-md font-medium text-zinc-200 dark:text-zinc-600">in Kudus</p>
-        <p className="text-md font-medium text-zinc-200 dark:text-zinc-600">
-          Central Java, Indonesia
-        </p>
-        <DigitalGlobe className="absolute right-3 top-[10%]" />
-      </motion.div>
+  initial={{ opacity: 0, x: -500 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 1, delay: 1 }}
+  className="absolute left-0 top-[50%] hidden h-[121px] w-[350px] flex-col items-start justify-center lg:flex px-5" // Pertahankan px-5 di sini
+>
+  {/* Elemen latar belakang dengan clipPath */}
+  <div
+    className="absolute inset-0 rounded-br-full rounded-tr-full bg-zinc-800 dark:bg-zinc-100"
+    style={{
+      clipPath:
+        "path('M 0 0 H 350 V 121 H 0 V 0 Z M 290 60 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0')",
+    }}
+  ></div>
+
+  {/* Konten tetap memiliki padding */}
+  <div className="relative z-10">
+    <p className="text-md font-medium text-zinc-200 dark:text-zinc-600">
+      Locate
+    </p>
+    <p className="text-md font-medium text-zinc-200 dark:text-zinc-600">
+      in Kudus
+    </p>
+    <p className="text-md font-medium text-zinc-200 dark:text-zinc-600">
+      Central Java, Indonesia
+    </p>
+  </div>
+
+  {/* DigitalGlobe */}
+  <DigitalGlobe className="absolute right-3 top-[10%] z-10" />
+</motion.div>
+
+
     </motion.section>
   );
 }

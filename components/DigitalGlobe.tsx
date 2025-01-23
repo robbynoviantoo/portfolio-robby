@@ -32,7 +32,7 @@ export default function DigitalGlobe({ className }: DigitalGlobeProps) {
   return (
     <div
       className={cn(
-        "max-md h-24 w-24 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800",
+        "max-md h-24 w-24 overflow-hidden rounded-full bg-transparent dark:bg-transparent",
         className
       )}
       ref={el}

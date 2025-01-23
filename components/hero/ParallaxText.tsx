@@ -70,7 +70,7 @@ export default function ParallaxText({
         x: 0,
         opacity: 1,
         transition: {
-          delay: 2,
+          delay: 1,
           duration: 1,
           easings: "ease",
         },
