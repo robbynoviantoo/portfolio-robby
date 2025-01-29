@@ -61,7 +61,7 @@ export default function HeroText() {
       <div
         className="absolute left-0 top-0 w-full h-full"
         style={{
-          transform: `translateY(${offsetY * 0.3}px)`, // Efek parallax
+          transform: `translateY(${offsetY * 0.1}px)`, // Efek parallax
           transition: "transform 0.1s linear",
         }}
       >
@@ -73,19 +73,6 @@ export default function HeroText() {
           priority
           className="object-cover lg:object-contain opacity-0" // Default: opacity 0
           onLoadingComplete={() => setIsLoaded(true)} // Set isLoaded ke true setelah gambar selesai dimuat
-        />
-      </div>
-
-      {/* Teks Freelance */}
-      <div className="absolute left-[3%] bottom-[31%] lg:left-[20%] lg:bottom-[53%] xl:left-[30%] xl:bottom-[53%]">
-        <AnimateWords title="Freelance" style="text-2xl xl:text-4xl font-bold" />
-      </div>
-
-      {/* Teks Front-end Developer */}
-      <div className="absolute left-[3%] bottom-[24%] lg:left-[60%] lg:bottom-[63%] xl:left-[56%] xl:bottom-[63%]">
-        <AnimateWords
-          title="Front-End Developer"
-          style="text-2xl xl:text-4xl font-bold"
         />
       </div>
     </div>

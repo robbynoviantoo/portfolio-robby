@@ -6,79 +6,43 @@ import Hero from "@/components/hero/Hero";
 import Nav from "@/components/navbar/Nav";
 import Preload from "@/components/preload/Preload";
 import Projects from "@/components/projects/Projects";
+import MouseFollowEffect from "@/components/MouseFollowEffect";
 import { AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [loadingPreloader, setLoadingPreloader] = useState<boolean>(true);
   const [endedLoading, setEndedLoading] = useState<boolean>(false);
 
-  // Refs untuk animasi GSAP
-  const navRef = useRef<HTMLDivElement>(null);
-  const mainRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    const body = document.querySelector("body");
+    setTimeout(() => setLoadingPreloader(false), 4000);
+    setTimeout(() => setEndedLoading(true), 3000);
+  }, []);
 
-    if (loadingPreloader) {
-      body?.classList.add("overflow-hidden");
-      setTimeout(() => {
-        setLoadingPreloader(false);
-      }, 4000);
-      setTimeout(() => {
-        setEndedLoading(true);
-      }, 3000);
-    } else {
-      body?.classList.remove("overflow-hidden");
-    }
-  }, [loadingPreloader]);
+  return (
+    <div className="relative w-full min-h-screen font-neueMontreal">
+      {/* Preloader sebagai overlay */}
+      <AnimatePresence mode="wait">
+        {loadingPreloader && (
+          <div className="absolute inset-0 z-[2000]">
+            <Preload endedLoading={endedLoading} />
+          </div>
+        )}
+      </AnimatePresence>
 
-  // Animasi GSAP untuk Nav dan Main
-  // useEffect(() => {
-  //   if (endedLoading) {
-  //     const tl = gsap.timeline();
-  //     tl.fromTo(
-  //       navRef.current,
-  //       { y: 100, opacity: 0 },
-  //       { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-  //     )
-  //       .fromTo(
-  //         mainRef.current,
-  //         { y: 100, opacity: 0 },
-  //         { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
-  //         "-=0.5" // Overlap animasi main dengan nav
-  //       );
-  //   }
-  // }, [endedLoading]);
+      {/* Mouse Follow Effect */}
+      <MouseFollowEffect />
 
-  if (loadingPreloader) {
-    return (
-      <>
-        <AnimatePresence mode="wait" initial={true}>
-          {loadingPreloader && <Preload endedLoading={endedLoading} />}
-        </AnimatePresence>
-      </>
-    );
-  }
-
-  if (!loadingPreloader) {
-    return (
-      <>
-        <div ref={navRef}>
-          <Nav />
-        </div>
-        <main
-          ref={mainRef}
-          data-scroll-container
-          className="flex flex-col items-center scrollbar-hide"
-        >
+      {/* Halaman utama tetap di tempatnya */}
+      <div>
+        <Nav />
+        <main className="flex flex-col items-center">
           <Hero />
           <About />
           <Projects />
           <Contact />
         </main>
-      </>
-    );
-  }
+      </div>
+    </div>
+  );
 }

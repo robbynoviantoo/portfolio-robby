@@ -21,7 +21,7 @@ interface ParallaxTextProps {
 
 export default function ParallaxText({
   children,
-  baseVelocity = 200,
+  baseVelocity = 100,
   direction,
 }: ParallaxTextProps) {
   const baseX = useMotionValue(0);
@@ -36,12 +36,8 @@ export default function ParallaxText({
     damping: 30,
   });
 
-  const skewVelocityFactor = useTransform(
-    skewVelocity,
-    [-1000, 1000],
-    [-30, 30]
-  );
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 10], {
+
+  const velocityFactor = useTransform(smoothVelocity, [0, 2000], [0, 10], {
     clamp: false,
   });
 
@@ -50,7 +46,7 @@ export default function ParallaxText({
   const directionFactor = useRef<number>(1);
 
   useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 500);
+    let moveBy = directionFactor.current * baseVelocity * (delta / 800);
 
     if (velocityFactor.get() < 0) {
       directionFactor.current = -1;
@@ -82,25 +78,25 @@ export default function ParallaxText({
         className="flex flex-nowrap whitespace-nowrap text-[10rem] font-bold  md:text-[12rem] lg:text-[14rem]" // Warna diubah ke biru
       >
         <motion.span
-          style={{ skew: skewVelocityFactor }}
+          style={{  }}
           className="mr-10 block"
         >
           {children}{" "}
         </motion.span>
         <motion.span
-          style={{ skew: skewVelocityFactor }}
+          style={{  }}
           className="mr-10 block"
         >
           {children}{" "}
         </motion.span>
         <motion.span
-          style={{ skew: skewVelocityFactor }}
+          style={{  }}
           className="mr-10 block"
         >
           {children}{" "}
         </motion.span>
         <motion.span
-          style={{ skew: skewVelocityFactor }}
+          style={{  }}
           className="mr-10 block"
         >
           {children}{" "}

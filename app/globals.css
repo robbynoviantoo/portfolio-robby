@@ -259,3 +259,14 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* globals.css atau file CSS global Anda */
+@font-face {
+  font-family: 'NeueMontreal';
+  src: url('/font/NeueMontreal-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'NeueMontreal', sans-serif;
+}

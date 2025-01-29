@@ -20,8 +20,11 @@ useTexture.preload("../assets/images/tag_texture.png");
 export default function Contact() {
   const canvasRef = useRef(null);
 
-  // Hook to detect when Canvas is in viewport
-  const isInView = useInView(canvasRef, { once: true, margin: "0px 0px -50px 0px" });
+  // Hook to detect when Canvas is in viewport, adjusted for center visibility
+  const isInView = useInView(canvasRef, {
+    once: true, // Trigger only once
+    margin: "-50% 0px -50% 0px", // Trigger when element is at the center of the viewport
+  });
 
   return (
     <section
@@ -103,23 +106,23 @@ export default function Contact() {
             <ContactLink
               href="https://instagram.com/robbynovianto_"
               label="Instagram"
-              icon={
+              icon={(
                 <InstagramIcon className="text-zinc-200 dark:text-zinc-800" />
-              }
+              )}
             />
             <ContactLink
               href="mailto:heyitsrobby99@gmail.com"
               label="Email"
-              icon={
+              icon={(
                 <MailIcon className="text-zinc-200 dark:text-zinc-800" />
-              }
+              )}
             />
             <ContactLink
               href="https://www.linkedin.com/in/heyitsrobby/"
               label="LinkedIn"
-              icon={
+              icon={(
                 <LinkedinIcon className="text-zinc-200 dark:text-zinc-800" />
-              }
+              )}
             />
           </div>
         </div>
