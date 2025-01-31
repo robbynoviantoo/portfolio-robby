@@ -24,17 +24,6 @@ export default function NavMenuSocial({
   const el = useRef<HTMLDivElement | null>(null)
   const tl = useRef<GSAPTimeline | null>(gsap.timeline({ paused: true }))
 
-  useIsomorphicLayoutEffect(() => {
-    if(!el.current) 
-    gsap.context(() => {
-      tl.current?.fromTo(
-        el.current,
-        { x: 150 },
-        { x: 0, duration: duration, ease: "power3.inOut" }
-      )
-    }, el)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   useEffect(() => {
     if (active) {

@@ -16,9 +16,9 @@ export default function Home() {
     <div className="relative w-full min-h-screen font-neueMontreal">
       <div>
         <Nav />
-        <main className="flex flex-col items-center">
+        <main className="flex flex-col items-center bg-zinc-50 dark:bg-zinc-900">
           <Hero />
-          {/* <About /> */}
+          <About />
           <Projects />
           <Contact />
         </main>
