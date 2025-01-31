@@ -90,13 +90,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "bg-zinc-50 text-zinc-800 antialiased dark:bg-neutral-900 dark:text-zinc-50",
-          font.className
-        )}
-      >
+    <html lang="en" >
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
