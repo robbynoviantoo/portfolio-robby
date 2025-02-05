@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     },
     description:
       "A seasoned frontend web developer with a passion for creating engaging and interactive websites.",
-    creator: "@aafrzl",
+    creator: "@robbynovianto_",
     images: [
       {
         url: "/public/images/og-images.jpg",
@@ -87,7 +87,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           enableSystem
           disableTransitionOnChange
         >
+        <SmoothScrollProvider
+            options={{
+              smooth: true,
+              mobile: {
+                smooth: true,
+              },
+              tablet: {
+                smooth: true,
+              },
+            }}
+          >
           {children}
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>

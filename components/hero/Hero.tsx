@@ -14,13 +14,34 @@ export default function Hero() {
       initial="initial"
       animate="animate"
     >
-<div className="absolute w-screen z-[100]">
-  <div className="flex pb-[15vh] mx-auto justify-end order-2">
-    <div className="flex flex-col">    <h4>Freelance</h4>
-    <h4>Front-End Dev</h4></div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="absolute w-screen z-[100] hidden lg:block lg:p-5 max-w-7xl"
+      >
+        <div className="flex pb-[15vh] mx-auto justify-end order-2">
+          <div className="flex flex-col">
+            <h4 className="lg:text-[45px] xl:text-[54px] font-medium">Freelance</h4>
+            <h4 className="lg:text-[45px] xl:text-[54px] font-medium">Front-End Dev</h4>
+          </div>
+        </div>
+      </motion.div>
 
-  </div>
-</div>
+      {/* Mobile Version */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="absolute bottom-28 w-screen z-[100] p-4 md:hidden max-w-7xl"
+      >
+        <div className="flex mx-auto justify-start">
+          <div className="flex flex-col">
+            <h4 className="text-[30px] font-medium">Freelance</h4>
+            <h4 className="text-[30px] font-medium">Front-End Dev</h4>
+          </div>
+        </div>
+      </motion.div>
       {/* Container Relatif untuk Posisi Absolut */}
       <div className="relative h-[110vh] w-full">
         {/* ParallaxText di atas Gambar */}
