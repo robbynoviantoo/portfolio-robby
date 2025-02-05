@@ -11,32 +11,12 @@ import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [loadingPreloader, setLoadingPreloader] = useState<boolean>(true);
-  const [endedLoading, setEndedLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    setTimeout(() => setLoadingPreloader(false), 4000);
-    setTimeout(() => setEndedLoading(true), 3000);
-  }, []);
 
   return (
     <div className="relative w-full min-h-screen font-neueMontreal">
-      {/* Preloader sebagai overlay */}
-      <AnimatePresence mode="wait">
-        {loadingPreloader && (
-          <div className="absolute inset-0 z-[2000]">
-            <Preload endedLoading={endedLoading} />
-          </div>
-        )}
-      </AnimatePresence>
-
-      {/* Mouse Follow Effect */}
-      <MouseFollowEffect />
-
-      {/* Halaman utama tetap di tempatnya */}
       <div>
         <Nav />
-        <main className="flex flex-col items-center">
+        <main className="flex flex-col items-center bg-zinc-50 dark:bg-zinc-900">
           <Hero />
           <About />
           <Projects />

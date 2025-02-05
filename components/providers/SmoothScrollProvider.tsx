@@ -23,9 +23,6 @@ export const SmoothScrollProvider = ({
     const initializeScroll = async () => {
       const container = document.querySelector("[data-scroll-container]");
       if (!container) {
-        console.error(
-          "[SmoothScrollProvider]: No element found with the attribute [data-scroll-container]."
-        );
         return;
       }
 

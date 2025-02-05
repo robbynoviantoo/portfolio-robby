@@ -1,11 +1,7 @@
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
-import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
-import { Work_Sans } from "next/font/google"
 import "./globals.css"
-
-const font = Work_Sans({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
@@ -14,7 +10,7 @@ export const metadata: Metadata = {
   },
   description:
     "A seasoned frontend web developer with a passion for creating engaging and interactive websites.",
-  metadataBase: new URL("https://aafrzl.my.id"),
+  metadataBase: new URL("https://portfolio-robby.netlify.app/"),
   openGraph: {
     title: {
       template: "Coding with Robby | %s",
@@ -22,7 +18,7 @@ export const metadata: Metadata = {
     },
     description:
       "A seasoned frontend web developer with a passion for creating engaging and interactive websites.",
-    url: "https://aafrzl.my.id",
+    url: "https://portfolio-robby.netlify.app/",
     siteName: "Coding with Robby",
     images: [
       {
@@ -35,9 +31,6 @@ export const metadata: Metadata = {
     type: "website",
   },
   keywords: [
-    "afrizal mufriz fouji",
-    "afrizal",
-    "coding with afrizal",
     "frontend web developer",
     "frontend developer",
     "frontend engineer",
@@ -72,7 +65,7 @@ export const metadata: Metadata = {
     },
     description:
       "A seasoned frontend web developer with a passion for creating engaging and interactive websites.",
-    creator: "@aafrzl",
+    creator: "@robbynovianto_",
     images: [
       {
         url: "/public/images/og-images.jpg",
@@ -84,26 +77,17 @@ export const metadata: Metadata = {
   category: "technology",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "bg-zinc-50 text-zinc-800 antialiased dark:bg-neutral-900 dark:text-zinc-50",
-          font.className
-        )}
-      >
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
-          storageKey="theme-mode"
+          disableTransitionOnChange
         >
-          <SmoothScrollProvider
+        <SmoothScrollProvider
             options={{
               smooth: true,
               mobile: {
@@ -114,10 +98,10 @@ export default function RootLayout({
               },
             }}
           >
-            {children}
+          {children}
           </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

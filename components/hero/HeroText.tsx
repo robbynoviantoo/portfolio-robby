@@ -61,7 +61,7 @@ export default function HeroText() {
       <div
         className="absolute left-0 top-0 w-full h-full"
         style={{
-          transform: `translateY(${offsetY * 0.1}px)`, // Efek parallax
+          transform: `translateY(${offsetY * 0.12}px)`, // Efek parallax
           transition: "transform 0.1s linear",
         }}
       >

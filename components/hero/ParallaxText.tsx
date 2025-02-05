@@ -13,7 +13,7 @@ import { useRef } from "react";
 import { wrap } from "@motionone/utils";
 
 interface ParallaxTextProps {
-  children: string;
+  children: React.ReactNode;
   baseVelocity: number;
   direction: number;
   className?: string;
@@ -75,7 +75,7 @@ export default function ParallaxText({
     >
       <motion.div
         style={{ x }}
-        className="flex flex-nowrap whitespace-nowrap text-[10rem] font-bold  md:text-[12rem] lg:text-[14rem]" // Warna diubah ke biru
+        className="flex flex-nowrap whitespace-nowrap text-[200px] font-medium  md:text-[15vw] pb-[200px] md:pb-0" // Warna diubah ke biru
       >
         <motion.span
           style={{  }}

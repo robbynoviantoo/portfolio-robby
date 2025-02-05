@@ -1,6 +1,6 @@
 {
-  "name": "interactive-3d-event-badge",
-  "version": "0.1.0",
+  "name": "portfolio-robby",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -51,7 +51,7 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
-  "author": "Daffa Haidar Nabil Zufar",
+  "author": "Robby Novianto",
   "keywords": [
     "nextjs",
     "interactive",
